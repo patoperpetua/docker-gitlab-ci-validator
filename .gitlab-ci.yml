@@ -20,7 +20,8 @@ build:
         export DOCKER_BUILD_TAG=${CI_COMMIT_REF_NAME};
       fi
     - ./scripts/generate_docker_image.sh -c=${CI_COMMIT_SHA} -p
-  except:
+  only:
     changes:
-      - README.md
-      - .gitignore
+      - .gitlab-ci.yml
+      - scripts/*
+      - docker-images/*
