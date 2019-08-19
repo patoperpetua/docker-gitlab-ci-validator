@@ -1,0 +1,23 @@
+image: docker:latest
+
+stages:
+  - deploy
+
+build:
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_BUILD_BASE_NAME: ${CI_REGISTRY_IMAGE}
+  stage: deploy
+  before_script:
+    - echo "${REGISTRY_GITLAB_PASS}" | docker login registry.gitlab.com -u ${REGISTRY_GITLAB_USER} --password-stdin
+    - apk add --no-cache bash curl gawk git sed util-linux pciutils usbutils coreutils binutils findutils grep
+  script:
+    - if [ "${CI_COMMIT_REF_NAME}" == "master" ]; then
+        export DOCKER_BUILD_TAG=latest;
+      else
+        export DOCKER_BUILD_TAG=${CI_COMMIT_REF_NAME};
+      fi
+    - ./scripts/generate_docker_image.sh -c=${CI_COMMIT_SHA} -p
+  when: on_success
