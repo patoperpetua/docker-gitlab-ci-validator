@@ -14,6 +14,28 @@ Contains necessary files to create docker images with gitlab-ci validator.
 
 * [Github Code0x58 Gitlab-CI Validate](https://github.com/Code0x58/gitlab-ci-validate)
 
+## HOW TO SETUP PROXY
+
+Execute the following code to create the necessary folders:
+
+```bash
+mkdir -p .docker/.proxy
+```
+
+Create a file inside **.proxy** folder called **config.json. Inside it, write the following (make the changes to your actual proxy configuration):
+
+```json
+{
+  "proxies": {
+    "default": {
+      "httpProxy": "http://****proxyIP****:***proxyPort***",
+      "httpsProxy": "http://****proxyIP****:***proxyPort***",
+      "ftpProxy": "http://****proxyIP****:***proxyPort***"
+    }
+  }
+}
+```
+
 ----------------------
 
 © [Singleton SD](http://singletonsd.com), Italy, 2019.
