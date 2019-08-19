@@ -23,5 +23,5 @@ build:
   only:
     changes:
       - .gitlab-ci.yml
-      - scripts/*
-      - docker-images/*
+      - scripts
+      - docker-images
