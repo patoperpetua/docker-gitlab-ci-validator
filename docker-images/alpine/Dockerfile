@@ -12,7 +12,7 @@ LABEL mainteiner="Patricio Perpetua <patricio.perpetua.arg@gmail.com>" \
     distribution-scope="private" \
     Summary="Image with gitlab-ci validator."
 
-RUN apk add --no-cache bash && \
+RUN apk add --no-cache bash curl ca-certificates && \
   rm -rf /var/lib/apt/lists/*
 
 COPY binaries/gitlab /usr/bin/
