@@ -6,13 +6,19 @@ Contains necessary files to create docker images with gitlab-ci validator.
 
 ## IMAGES
 
-* **singletonsd/docker/gitlab-ci-validator/:** contains only chromium.
-* **singletonsd/docker/gitlab-ci-validator/:** contains nodejs version 9.8.0-1.
-* **singletonsd/docker/gitlab-ci-validator/:** contains nodejs version 8.10.0-1.
+- **singletonsd/docker/gitlab-ci-validator/alpineXXX:** alpine base image. Available versions:
+  - **3.7**
+  - **3.8**
+  - **3.9**
+  - **edge**
+- **singletonsd/docker/gitlab-ci-validator/debianXXX:**debian base image. Available versions:
+  - **8**
+  - **9**
+  - **10**
 
 ## DOCUMENTATION
 
-* [Github Code0x58 Gitlab-CI Validate](https://github.com/Code0x58/gitlab-ci-validate)
+- [Github Code0x58 Gitlab-CI Validate](https://github.com/Code0x58/gitlab-ci-validate)
 
 ## HOW TO SETUP PROXY
 
