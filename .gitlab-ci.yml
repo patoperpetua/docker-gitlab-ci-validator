@@ -20,4 +20,7 @@ build:
         export DOCKER_BUILD_TAG=${CI_COMMIT_REF_NAME};
       fi
     - ./scripts/generate_docker_image.sh -c=${CI_COMMIT_SHA} -p
-  when: on_success
+  except:
+    changes:
+      - README.md
+      - .gitignore
