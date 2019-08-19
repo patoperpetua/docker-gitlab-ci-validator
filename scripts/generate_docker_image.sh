@@ -18,36 +18,38 @@ __base="$(basename ${__file} .sh)"
 __root="$(cd "$(dirname "${__dir}")" && pwd)"
 
 if ! type "docker" &> /dev/null; then
-  echo "Docker is not installed. Install it and then re launch"
-  exit 1
+    echo "Docker is not installed. Install it and then re launch"
+    exit 1
 fi
 
 if ! type "awk" &> /dev/null; then
-  echo "awk is not installed. Install it and then re launch"
-  exit 1
+    echo "awk is not installed. Install it and then re launch"
+    exit 1
 fi
 
 if ! type "curl" &> /dev/null; then
-  echo "curl is not installed. Install it and then re launch"
-  exit 1
+    echo "curl is not installed. Install it and then re launch"
+    exit 1
 fi
 
 function usage(){
-  echo -e "First Argument: use proxy? 1 or 0."
-  echo -e "Secound Argument: name"
-  echo -e "Third Argument: tag"
-  echo -e "Forth Argument: git commit sha"
+    echo -e "-h | --help: display help."
+    echo -e "-p | --push: push images after building."
+    echo -e "-x | --proxy: use proxy."
+    echo -e "-b | --base-name: base name of images."
+    echo -e "-c | --commit-sha: sha of commit to attach to image."
+    echo -e "-t | --tag: tag of images."
 }
 
 DOCKER_BUILD_COMMIT_SHA="none"
 DOCKER_BUILD_IMAGES_FOLDER="docker-images"
 
 if [ -z ${DOCKER_BUILD_BASE_NAME+x} ]; then
-  DOCKER_BUILD_BASE_NAME="registry.gitlab.com/singletonsd/docker/gitlab-ci-validator"
+    DOCKER_BUILD_BASE_NAME="registry.gitlab.com/singletonsd/docker/gitlab-ci-validator"
 fi
 
 if [ -z ${DOCKER_BUILD_TAG+x} ]; then
-  DOCKER_BUILD_TAG="latest"
+    DOCKER_BUILD_TAG="latest"
 fi
 
 DOCKER_BUILD_FLAG_PROXY=0
